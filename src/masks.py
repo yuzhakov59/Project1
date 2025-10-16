@@ -3,7 +3,7 @@ from typing import Union
 def get_mask_card_number(card_number: Union[int]) -> str:
     """Функцию маскировки номера банковской карты"""
 
-        return f"record_type {card_number[-16:-12]} {card_number[-12:-10]}** **** {card_number[-4:]}"
+    return f"record_type {card_number[-16:-12]} {card_number[-12:-10]}** **** {card_number[-4:]}"
 
 
 def get_mask_account(number_account: Union[int]) -> str:
