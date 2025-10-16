@@ -8,7 +8,7 @@ def mask_account_card(account_card: Union[str]) -> str:
     """Функция принимает один аргумент — строку, возвращает строку с замаскированным номером"""
 
     account = "Счет"
-    record_type = ''.join(re.split('[^a-zA-Z ]*', account_card))
+    record_type = ''.join(re.split('[^a-zA-Zа-яА-Я ]*', account_card))
     if account in account_card:
         return f'{record_type}{get_mask_account(account_card)}'
     else:
