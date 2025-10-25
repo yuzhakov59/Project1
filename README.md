@@ -19,8 +19,7 @@ pip install -r requirements.txt
 ## Использование:
 
 1. 
-2. 
-3. 
+2.
 
 ## Документация:
 
