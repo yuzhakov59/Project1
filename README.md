@@ -2,7 +2,7 @@
 
 ## Описание:
 
-Виджет - это приложение на Python для обработки данных.
+Это приложение на Python для ввода и обработки данных.
 
 ## Установка:
 
@@ -13,13 +13,14 @@ git clone git@github.com:yuzhakov59/Project1.git
 
 2. Установите зависимости:
 ```
-pip install -r requirements.txt
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
 ```
 
 ## Использование:
 
-1. 
-2.
+1. Запустить и ввести данные. 
+
 
 ## Документация:
 
