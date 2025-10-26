@@ -1,8 +1,11 @@
 import re
 
+
 from typing import Union
 
+
 from src.masks import get_mask_account, get_mask_card_number
+
 
 def mask_account_card(account_card: Union[str]) -> str:
     """Функция принимает один аргумент — строку, возвращает строку с замаскированным номером"""
