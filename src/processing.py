@@ -4,7 +4,7 @@ from typing import List, Dict
 from datetime import datetime
 
 
-def filter_by_state(list_dict: List[Dict[str, str]], state='EXECUTED') -> List[Dict[str, str]]:
+def filter_by_state(list_dict: List[Dict[str, str]], state: str = 'EXECUTED') -> List[Dict[str, str]]:
     """
     Функция принимает список словарей и опционально значение для ключа
     возвращает новый список словарей, содержащий только те словари,
