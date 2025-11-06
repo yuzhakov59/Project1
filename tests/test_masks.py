@@ -7,6 +7,7 @@ def test_get_mask_card_number():
     assert get_mask_card_number('70004567925289606361') == "Некорректно введён номер карты"
     assert get_mask_card_number('70007606361') == "Некорректно введён номер карты"
 
+
 def test_get_mask_account():
     assert get_mask_account('73654108430135874305') == '**4305'
     assert get_mask_account() == "Введите номер счета"
