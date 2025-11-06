@@ -13,8 +13,6 @@ from src.widget import mask_account_card, get_date
                                   ('Visa Gold 598426353', "Некорректно введён номер карты"),
                                   ('Счет 73654108305', "Некорректно введён номер счета")]
                          )
-
-
 def test_mask_account_card(x, y):
     assert mask_account_card(x) == y
 
@@ -24,5 +22,5 @@ def test_mask_account_card(x, y):
                                   ("2025-10-29T03:30:12.671407", "29.10.2025"),
                                   ("2025-10-29T01407", "Некорректно введёна дата")
                                   ])
-def test_get_date(a,b):
+def test_get_date(a, b):
     assert get_date(a) == b
