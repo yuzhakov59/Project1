@@ -32,7 +32,24 @@ def card_number_generator(start: int, stop: int) -> Iterator:
      начальное и конечное значения для генерации диапазона номеров.
     """
 
-    for num in range(start, stop + 1):
-        num_str = f"{num:016d}"
-        formatted_number = f"{num_str[:4]} {num_str[4:8]} {num_str[8:12]} {num_str[12:]}"
-        yield formatted_number
+    start_str = str(start)
+    try:
+        if 0 < len(start_str) < 17:
+            if start < stop:
+                for num in range(start, stop + 1):
+                    num_str = f"{num:016d}"
+                    formatted_number = f"{num_str[:4]} {num_str[4:8]} {num_str[8:12]} {num_str[12:]}"
+                    yield formatted_number
+            else:
+                return 1
+        else:
+            return 2
+    except StopIteration:
+        print('Вы вышли из цикла!')
+
+
+proba = card_number_generator(87654567654, 6578)
+print(next(proba))
+print(next(proba))
+print(next(proba))
+print(next(proba))
