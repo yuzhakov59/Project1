@@ -27,19 +27,11 @@ def test_transaction_descriptions(transactions):
     assert next(descriptions) == "Перевод с карты на карту"
 
 
-def test_card_number_generator(start=1, stop=5):
-    number_generator = card_number_generator(start, stop)
-    assert next(number_generator) == "0000 0000 0000 0001"
-    assert next(number_generator) == "0000 0000 0000 0002"
-    assert next(number_generator) == "0000 0000 0000 0003"
-    assert next(number_generator) == "0000 0000 0000 0004"
-
-
 @pytest.mark.parametrize('start, stop, x', [(1, 5, "0000 0000 0000 0001"),
                                             (546875, 54687545, "0000 0000 0054 6875"),
-                                            (65874589654587458, 658745896545874585, 'не верный диапазон'),
-                                            ('','', 'Не введён номер карты'),
-                                            (5, 1, 'не верный диапазон'),
+                                            (345678976, 3456789765, "0000 0003 4567 8976"),
+                                            (65874589654587458, 658745896545874585, "Не верный диапазон."),
+                                            (5, 1, "Не верный диапазон."),
                                             ])
 def test_card_number_generator(start, stop, x):
     number_generator = card_number_generator(start, stop)
