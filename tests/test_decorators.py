@@ -11,9 +11,24 @@ def test_log_console(capsys):
 
     my_function(2, 3)
     captured = capsys.readouterr()
-    assert "my_function ok" in captured.out
+    assert "my_function ok, Inputs: (2, 3)" in captured.out
+    assert my_function(2, 3) == 5
 
 
 def test_log():
     with pytest.raises(Exception, match="my_function"):
         my_function("10", 3)
+
+
+def test_log_file(filename="mylog.txt"):
+    """Проверяет, что информация логируется в файл."""
+    file_path_str = str(filename)
+
+    @log(filename="mylog.txt")
+    def my_function(x, y):
+        return x + y
+
+    result = my_function(1, 2)
+    assert result == 3
+    with open(file_path_str, "r") as f:
+        assert "my_function ok, Inputs: (1, 2)" in f.read()

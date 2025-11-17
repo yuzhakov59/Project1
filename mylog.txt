@@ -1,0 +1,1 @@
+my_function ok, Inputs: (1, 2)
