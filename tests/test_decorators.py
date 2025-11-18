@@ -15,9 +15,16 @@ def test_log_console(capsys):
     assert my_function(2, 3) == 5
 
 
+
+
+
 def test_log():
-    with pytest.raises(Exception, match="my_function"):
-        my_function("10", 3)
+    @log()
+    def my_function(x, y):
+        return x + y
+
+    my_function("10", 3)
+    assert my_function("10", 3) == "Ошибка ввода аргументов"
 
 
 def test_log_file(filename="mylog.txt"):
