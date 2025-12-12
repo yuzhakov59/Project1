@@ -1,6 +1,3 @@
-import pytest
-
-
 from src.decorators import log
 
 
@@ -13,9 +10,6 @@ def test_log_console(capsys):
     captured = capsys.readouterr()
     assert "my_function ok, Inputs: (2, 3)" in captured.out
     assert my_function(2, 3) == 5
-
-
-
 
 
 def test_log():
