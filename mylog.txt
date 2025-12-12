@@ -1,2 +1,3 @@
 my_function ok, Inputs: (1, 2)
 my_function ok, Inputs: (1, 2)
+my_function ok, Inputs: (1, 2)
