@@ -23,7 +23,7 @@ def test_currency_conversion(mock_get):
     result = currency_conversion(API_KEY, 'USD', 1)
 
     mock_get.assert_called_once_with(
-        f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=1",
+        "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=1",
         headers={"apikey": API_KEY}
     )
     assert result == 75.0
