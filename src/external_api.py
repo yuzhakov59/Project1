@@ -19,6 +19,8 @@ def currency_conversion(api_key, code, amount):
     headers = {
         "apikey": api_key
     }
+    usd = 80
+    eur = 94
 
     try:
         # Отправляем GET запрос к API.
@@ -36,12 +38,20 @@ def currency_conversion(api_key, code, amount):
         else:
             # Если неуспешно, печатаем сообщение об ошибке и возвращаем None.
             print(f"Ошибка API: {data.get('error', 'Неизвестная ошибка')}")
-            return None
+            if code == 'USD':
+                result = float(amount * usd)
+            else:
+                result = float(amount * eur)
+            return result
 
     except requests.exceptions.RequestException as e:
         # Обрабатываем ошибки, связанные с сетевым подключением.
         print(f"Ошибка подключения: {e}")
-        return None
+        if code == 'USD':
+            result = float(amount * usd)
+        else:
+            result = float(amount * eur)
+        return result
 
 
 def rub_amount(transaction):
