@@ -1,12 +1,11 @@
 import os
+import unittest
+from unittest.mock import patch
 
 from dotenv import load_dotenv
 
-import unittest
+from src.external_api import currency_conversion, rub_amount
 
-from unittest.mock import patch
-
-from src.external_api import rub_amount, currency_conversion
 
 load_dotenv()
 API_KEY = os.getenv('API_KEY')
