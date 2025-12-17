@@ -3,6 +3,7 @@ from unittest.mock import mock_open, patch
 
 from src.table import transactions_csv, transactions_excel_xlsx
 
+
 class TestTransactions(unittest.TestCase):
 
     # Тест успешного считывания данных из CSV
