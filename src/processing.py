@@ -1,8 +1,10 @@
 from datetime import datetime
 from typing import Dict, List
 
+from tests.conftest import state
 
-def filter_by_state(list_dict: List[Dict[str, str]], state: str = "EXECUTED") -> List[Dict[str, str]]:
+
+def filter_by_state(list_dict: List[Dict[str, str]], state: str = 'EXECUTED') -> List[Dict[str, str]]:
     """
     Функция принимает список словарей и опционально значение для ключа
     возвращает новый список словарей, содержащий только те словари,
@@ -11,8 +13,12 @@ def filter_by_state(list_dict: List[Dict[str, str]], state: str = "EXECUTED") ->
 
     new_list = []
     for i in list_dict:
-        if i["state"] == state:
-            new_list.append(i)
+        if i.get('state') is not None:
+            x = (i['state']).lower()
+            if x == state:
+                new_list.append(i)
+        else:
+            pass
     return new_list
 
 

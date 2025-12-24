@@ -49,6 +49,3 @@ def transactions_from_json(file_path):
         return []
     finally:
         logger.info(f"Обработка файла {file_path} завершена.")
-
-
-print(transactions_from_json('../data/operations.json'))
