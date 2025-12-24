@@ -1,5 +1,5 @@
-15:05:54 – utilsLogger – INFO – Начинается обработка файла: ../data/operations.json
-15:05:54 – utilsLogger – INFO – Файл ../data/operations.json успешно открыт.
-15:05:54 – utilsLogger – INFO – JSON данные успешно загружены из файла ../data/operations.json.
-15:05:54 – utilsLogger – INFO – JSON данные являются списком.
-15:05:54 – utilsLogger – INFO – Обработка файла ../data/operations.json завершена.
+12:47:43 – utilsLogger – INFO – Начинается обработка файла: ../data/operations.json
+12:47:43 – utilsLogger – INFO – Файл ../data/operations.json успешно открыт.
+12:47:43 – utilsLogger – INFO – JSON данные успешно загружены из файла ../data/operations.json.
+12:47:43 – utilsLogger – INFO – JSON данные являются списком.
+12:47:43 – utilsLogger – INFO – Обработка файла ../data/operations.json завершена.
