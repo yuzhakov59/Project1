@@ -1,8 +1,6 @@
 import csv
 import openpyxl
 
-from src.proba import result
-
 
 def transactions_csv(file_csv):
     """

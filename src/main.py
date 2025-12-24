@@ -2,6 +2,7 @@ from src.utils import transactions_from_json
 from src.transaction_filter import process_bank_search, process_bank_code
 from src.table import transactions_csv, transactions_excel_xlsx
 from src.processing import sort_by_date, filter_by_state
+from src.widget import mask_account_card, get_date
 
 
 def operation_status(transaction):
@@ -19,29 +20,49 @@ def operation_status(transaction):
 
 
 def filter(transactions):
-    sort_data = input('Отсортировать операции по дате? Да/Нет ')
-    if (sort_data).lower() == 'да':
-        filter_data = sort_by_date(transactions, reverse=True)
-    else:
-        filter_data = sort_by_date(transactions, reverse=False)
+    while True:
+        sort_data = input('Отсортировать операции по дате? Да/Нет ')
+        if (sort_data).lower() == 'да':
+            filter_data = sort_by_date(transactions, reverse=True)
+            break
+        elif (sort_data).lower() == 'нет':
+            filter_data = sort_by_date(transactions, reverse=False)
+            break
+        else:
+            print(f'Статус операции "{sort_data}" недоступен.')
 
-    sort_order = input('Отсортировать по возрастанию/по убыванию? ')
-    if (sort_order).lower() == 'по возрастанию':
-        filter_order = sorted(filter_data, key=lambda x: float(x["operationAmount"]["amount"]))
-    else:
-        filter_order = sorted(filter_data, key=lambda x: float(x["operationAmount"]["amount"]), reverse=True)
+    while True:
+        sort_order = input('Отсортировать по возрастанию/по убыванию? ')
+        if (sort_order).lower() == 'по возрастанию':
+            filter_order = sorted(filter_data, key=lambda x: float(x["operationAmount"]["amount"]))
+            break
+        elif (sort_order).lower() == 'по убыванию':
+            filter_order = sorted(filter_data, key=lambda x: float(x["operationAmount"]["amount"]), reverse=True)
+            break
+        else:
+            print(f'Статус операции "{sort_order}" недоступен.')
 
-    sort_code = input('Выводить только рублевые транзакции? Да/Нет ')
-    if (sort_code).lower() == 'да':
-        filter_code = process_bank_code(filter_order)
-    else:
-        filter_code = filter_order
+    while True:
+        sort_code = input('Выводить только рублевые транзакции? Да/Нет ')
+        if (sort_code).lower() == 'да':
+            filter_code = process_bank_code(filter_order)
+            break
+        elif (sort_code).lower() == 'нет':
+            filter_code = filter_order
+            break
+        else:
+            print(f'Статус операции "{sort_code}" недоступен.')
 
-    sort_word = input('Отфильтровать список транзакций по определенному слову в описании? Да/Нет ')
-    if (sort_word).lower() == 'да':
-        filter_word = process_bank_search(filter_code)
-    else:
-        filter_word = filter_code
+    while True:
+        sort_word = input('Отфильтровать список транзакций по определенному слову в описании? Да/Нет ')
+        if (sort_word).lower() == 'да':
+            filter_word = process_bank_search(filter_code)
+            break
+        elif (sort_word).lower() == 'нет':
+            filter_word = filter_code
+            break
+        else:
+            print(f'Статус операции "{sort_word}" недоступен.')
 
     return filter_word
 
@@ -64,15 +85,13 @@ def main():
 
     elif int(customer_input) == 2:
         print('Для обработки выбран CSV-файл.')
-        status = operation_status()
         file_csv = ('../data/transactions.csv')
         transaction = transactions_csv(file_csv)
         transactions = operation_status(transaction)
 
     elif int(customer_input) == 3:
         print('Для обработки выбран XLSX-файл1.')
-        status = operation_status()
-        file_xlsx = ('../data/transactions_excel.xlsx')
+        file_xlsx = ("../data/transactions_excel.xlsx")
         transaction = transactions_excel_xlsx(file_xlsx)
         transactions = operation_status(transaction)
 
@@ -80,7 +99,17 @@ def main():
         print('Введен неверный номер')
 
     result = filter(transactions)
-    print(result)
+    if result == []:
+        print('Не найдено ни одной транзакции, подходящей под ваши условия фильтрации')
+    else:
+        for i in result:
+            dat = get_date(i["date"])
+            print(f'{dat} {i["description"]}')
+            maska_card = mask_account_card(i["to"])
+            print(maska_card)
+            print(f'Сумма {i["operationAmount"]["amount"]} {i["operationAmount"]["currency"]["name"]}.')
+            print()
+
     return result
 
 
