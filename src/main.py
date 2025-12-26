@@ -9,7 +9,7 @@ def operation_status(transaction):
     while True:
         stat = input('Введите статус, по которому необходимо выполнить фильтрацию. '
                        'Доступные для фильтровки статусы: EXECUTED, CANCELED, PENDING ')
-        if (stat).lower() in "executed, canceled, pending":
+        if (stat).lower() == "executed" or "canceled" or "pending":
             list_dict = transaction
             result = filter_by_state(list_dict, (stat).lower())
             print(f'Операции отфильтрованы по статусу "{stat}"')
